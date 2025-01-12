@@ -5,9 +5,8 @@ from instagrapi.types import StoryMention, StoryMedia, StoryLink, StoryHashtag
 
 SESSION_FILE = 'session.json'
 # Access environment variables for Instagram credentials
-username = 'money.grenadex'
-password = 'dilip1973'
-
+username = os.getenv('INSTAGRAM_USERNAME')
+password = os.getenv('INSTAGRAM_PASSWORD')
 
 def login():
     print("   [green] Initializing login... [/green]")
