@@ -23,8 +23,26 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Check if session file exists
+        id: check_session
+        run: |
+          if [ -f "./session.json" ]; then
+            echo "Session file exists."
+            echo "session_exists=true" >> $GITHUB_ENV
+          else
+            echo "Session file not found."
+            echo "session_exists=false" >> $GITHUB_ENV
+          fi
+
       - name: Run Python script to upload reel
         run: python autoupload.py
         env:
           INSTAGRAM_USERNAME: ${{ secrets.INSTAGRAM_USERNAME }}
           INSTAGRAM_PASSWORD: ${{ secrets.INSTAGRAM_PASSWORD }}
+
+      - name: Upload session file as artifact
+        if: env.session_exists == 'true'
+        uses: actions/upload-artifact@v2
+        with:
+          name: session-file
+          path: ./session.json

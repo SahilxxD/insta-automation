@@ -4,8 +4,9 @@ import os
 from instagrapi.types import StoryMention, StoryMedia, StoryLink, StoryHashtag
 
 SESSION_FILE = 'session.json'
-username = 'money.grenadex'
-password = 'dilip1973'
+# Access environment variables for Instagram credentials
+username = os.getenv('INSTAGRAM_USERNAME')
+password = os.getenv('INSTAGRAM_PASSWORD')
 
 
 def login():
@@ -31,28 +32,8 @@ def login():
         return api
 
 
-# Trim Video for story
-def trim_video(file_path, output_path, max_duration=15):
-    clip = VideoFileClip(file_path)
-    trimmed_clip = clip.subclip(0, max_duration)
-    trimmed_clip.write_videofile(output_path)
-    return output_path
-
-# Get Video Duration
-
-
-def get_video_duration(file_path):
-    clip = VideoFileClip(file_path)
-    duration = clip.duration
-    return duration
-
-
 def post_to_story(api, media, media_path):
     hashtag = api.hashtag_info('like')
-
-    duration = get_video_duration(media_path)
-    # if duration > 15:
-    #     media_path = trim_video(media_path,config.DOWNLOAD_DIR+os.sep+media.code+".mp4")
 
     media_pk = api.media_pk_from_url(
         'https://www.instagram.com/p/'+media.code+'/')
