@@ -1,2 +1,2 @@
-instagrapi==2.5.0
+instagrapi
 moviepy==1.0.3
