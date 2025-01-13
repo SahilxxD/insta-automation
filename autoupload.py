@@ -92,7 +92,7 @@ def upload(video_path, hashtags):
         print("Reel uploaded successfully!")
 
         # After the reel is uploaded, upload the story linked to it
-        post_to_story(api, reel, '1.mp4')
+        post_to_story(api, reel, video_path)
 
     except Exception as e:
         print(f"Exception {type(e).__name__}: {str(e)}")
