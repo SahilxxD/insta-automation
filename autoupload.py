@@ -2,11 +2,12 @@ from instagrapi import Client
 import datetime
 import os
 from instagrapi.types import StoryMention, StoryMedia, StoryLink, StoryHashtag
+import random
 
 SESSION_FILE = 'session.json'
 # Access environment variables for Instagram credentials
-username = os.getenv('INSTAGRAM_USERNAME')
-password = os.getenv('INSTAGRAM_PASSWORD')
+username = 'money.grenadex'
+password = 'dilip1973'
 
 
 def login():
@@ -50,13 +51,39 @@ def post_to_story(api, media, media_path):
     )
 
 
-def upload(video_path, caption):
+def upload(video_path, hashtags):
     api = login()
+    captions = [
+        "🐾 Love animals? Follow for daily heartwarming pet videos that will make your day! 🐶🐱",
+        "😊 Want to smile every day? Follow us for the cutest animal moments on Instagram! 🐕🐈",
+        "🐾 Get your daily dose of adorable pets! Follow now and join our animal-loving community! 🐾💖",
+        "🐕 Can't get enough of cute animals? Follow for non-stop furry fun! 🐾🎉",
+        "🐶 Join our tribe of animal lovers! Follow for daily paw-some videos! 🐾🐕",
+        "🌟 Follow us and turn your feed into a haven of cuteness and joy! 🐾🐱",
+        "📣 Missing out on these adorable moments? Follow now to stay updated! 🐕🐾",
+        "🐾 Click that follow button for endless animal cuteness and fun! 🐶🐱",
+        "😊 Need more joy in your life? Follow us for daily pet happiness! 🐾💖",
+        "🐕 Follow now to fill your feed with furry friends and adorable antics! 🐾🐈",
+        "🐾 Be the first to see our cutest pet videos! Hit follow and never miss out! 🐕🎥",
+        "😊 Your daily smile starts here! Follow for the cutest pets on Instagram! 🐾🐶",
+        "🐾 Looking for daily cheer? Follow us and get a front-row seat to pet cuteness! 🐕🐱",
+        "🌟 Brighten your day with adorable animal videos! Follow us for daily updates! 🐾🐈",
+        "🐾 Ready for a cuteness overload? Follow now and let the fun begin! 🐶🎉"
+    ]
+    # Select one random caption
+    random_caption = random.choice(captions)
     try:
+        # Randomly select 10 hashtags
+        selected_hashtags = random.sample(hashtags, 10)
+        hashtags_str = ' '.join(selected_hashtags)
+
+        # Add the hashtags to the caption
+        caption_with_hashtags = f"{random_caption} {hashtags_str}"
+
         api.delay_range = [1, 3]
         reel = api.clip_upload(
             video_path,
-            caption,
+            caption_with_hashtags,
             extra_data={
                 # "custom_accessibility_caption": "alt text example",
                 "like_and_view_counts_disabled": True,
@@ -76,6 +103,27 @@ def main():
     # Path to the video directory (reels folder in the same repo)
     video_dir = './reels'
 
+    hashtags = [
+        "#CuteAnimals",
+        "#FunnyAnimals",
+        "#AnimalVideos",
+        "#PetLovers",
+        "#PetsofIG",
+        "#AdorablePets",
+        "#PetPhotography",
+        "#FurBabies",
+        "#FurryLove",
+        "#AnimalMagic",
+        "#AnimalsOfInstagram",
+        "#InstaAnimal",
+        "#PetAddict",
+        "#PetsofInstagram",
+        "#WildlifePhotographer",
+        "#FurryFriends",
+        "#NatureLovers",
+        "#WildlifeLover"
+    ]
+
     # Get the current day of the month (1-31)
     day_of_month = datetime.datetime.now().day
     print(f"Day of the month: {day_of_month}")
@@ -84,8 +132,7 @@ def main():
 
     if day_of_month <= len(video_files):
         video_path = os.path.join(video_dir, video_files[day_of_month - 1])
-        caption = f"Uploading reel for day {day_of_month}."
-        upload(video_path, caption)
+        upload(video_path, hashtags)
     else:
         print("No video to upload today.")
 
