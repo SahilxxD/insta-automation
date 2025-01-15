@@ -13,7 +13,7 @@ username = os.getenv('INSTAGRAM_USERNAME', 'your_default_username')
 password = os.getenv('INSTAGRAM_PASSWORD', 'your_default_password')
 
 
-def random_delay(min_seconds=2, max_seconds=5):
+def random_delay(min_seconds=2, max_seconds=60):
     """Introduce a random delay to mimic human behavior."""
     delay = random.uniform(min_seconds, max_seconds)
     time.sleep(delay)
@@ -82,6 +82,7 @@ def post_to_story(api, media, media_path):
 
 def upload(video_path, hashtags):
     """Upload a video to Instagram as a reel with random captions and hashtags."""
+    random_delay(2,60)
     api = login()
     if not api:
         print("Login failed. Skipping upload.")
