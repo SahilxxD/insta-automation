@@ -84,6 +84,7 @@ def upload(video_path, hashtags):
     """Upload a video to Instagram as a reel with random captions and hashtags."""
     random_delay(2,2*60)
     api = login()
+    
     if not api:
         print("Login failed. Skipping upload.")
         return
@@ -101,7 +102,7 @@ def upload(video_path, hashtags):
         hashtags_str = ' '.join(selected_hashtags)
 
         caption_with_hashtags = f"{random_caption} {hashtags_str}"
-
+        random_delay(2,60)
         api.delay_range = [1, 3]
         reel = api.clip_upload(
             video_path,
