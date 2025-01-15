@@ -82,7 +82,7 @@ def post_to_story(api, media, media_path):
 
 def upload(video_path, hashtags):
     """Upload a video to Instagram as a reel with random captions and hashtags."""
-    random_delay(2,60)
+    random_delay(2,2*60)
     api = login()
     if not api:
         print("Login failed. Skipping upload.")
@@ -111,7 +111,6 @@ def upload(video_path, hashtags):
             }
         )
         print("Reel uploaded successfully!")
-        random_delay()
 
         post_to_story(api, reel, video_path)
 
