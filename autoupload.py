@@ -90,18 +90,29 @@ def upload(video_path, hashtags):
         return
 
     captions = [
-        "🐾 Love animals? Follow for daily heartwarming pet videos that will make your day! 🐶🐱",
-        "😊 Want to smile every day? Follow us for the cutest animal moments on Instagram! 🐕🐈",
-        "🐾 Get your daily dose of adorable pets! Follow now and join our animal-loving community! 🐾💖",
+        "🐾 Who else believes that pets are family? Share your favorite pet moment with us! 💖",
+        "✨ Pets remind us to love unconditionally! Tag a friend who loves their fur baby as much as you do! 💕",
+        "🌸 Every pet has a story! What’s one thing your pet has taught you about love? 🐾",
+        "🐕😽 Let’s celebrate our furry friends! Share a pic of your pet in the comments for a chance to be featured! 📸💖",
+        "🌺 Who else thinks their pet is the cutest? Drop a ❤️ if you agree!",
+        "🌟 Let’s settle this debate! Cats or dogs: which do you think make better companions? Vote in the comments and tell us why! 🐕🐈",
+        "🐶 Calling all pet parents! Want to see your furry friend featured? Follow & DM us a video of your pet being their adorable self, and you might just be our next star! 🌟 Can’t wait to see those cuties! 💕",
+        "✨ Show us what makes your pet special! Follow & DM us a video for a chance to be featured on our account! What’s one thing that makes your pet unique? Let’s share the love! 🐕💞",
+        "🌸 Let’s celebrate our furry friends together! DM us a video of your pet for a chance to be featured on our page! Let’s create a gallery of cuteness that everyone can enjoy! 🥰🐾",
+        "💡 Let’s help each other out! What’s one tip you have for new pet owners? Share your wisdom in the comments, and let’s create a helpful community together! 🐾🌼",
+        "🐾 Who else thinks their pet is a superstar? Drop a ⭐ if you agree!",
+        "🌟 Who else loves their fur baby to the moon and back? Drop a 🌙 if you do!",
+        "🐾 Who thinks their pet is the best part of their day? Give a thumbs up 💯 if you agree!",
+        "🌈 Who else believes pets make life brighter? Comment with a ☀️ if you agree!",
         # Add more captions as needed
     ]
 
     random_caption = random.choice(captions)
     try:
-        selected_hashtags = random.sample(hashtags, 10)
+        selected_hashtags = random.sample(hashtags, 8)
         hashtags_str = ' '.join(selected_hashtags)
 
-        caption_with_hashtags = f"{random_caption} {hashtags_str}"
+        caption_with_hashtags = f"{random_caption}\n{hashtags_str}"
         random_delay(2,60)
         api.delay_range = [1, 3]
         reel = api.clip_upload(
