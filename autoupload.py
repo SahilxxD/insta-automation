@@ -103,7 +103,7 @@ def upload(video_path, hashtags):
         "🐾 Who else thinks their pet is a superstar? Drop a ⭐ if you agree!",
         "🌟 Who else loves their fur baby to the moon and back? Drop a 🌙 if you do!",
         "🐾 Who thinks their pet is the best part of their day? Give a thumbs up 💯 if you agree!",
-        "🌈 Who else believes pets make life brighter? Comment with a ☀️ if you agree!",
+        "🌈 Who else believes pets make life brighter? Comment with a ☀️ if you agree!"
         # Add more captions as needed
     ]
 
