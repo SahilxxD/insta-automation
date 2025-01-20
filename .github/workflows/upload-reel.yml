@@ -2,7 +2,7 @@ name: Upload Instagram Reel Daily
 
 on:
   schedule:
-    - cron: '0 11 * * *'  # Runs every 5 minutes
+    - cron: '20 11 * * *'  # Runs every 5 minutes
   workflow_dispatch:  # Allows manual triggering from GitHub UI
 
 jobs:
