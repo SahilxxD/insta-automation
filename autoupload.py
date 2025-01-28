@@ -111,8 +111,9 @@ def upload(video_path, hashtags):
     try:
         selected_hashtags = random.sample(hashtags, 8)
         hashtags_str = ' '.join(selected_hashtags)
+        keywords = ', '.join(word.replace('#', '') for word in selected_hashtags)
 
-        caption_with_hashtags = f"{random_caption}\n{hashtags_str}"
+        caption_with_hashtags = f"{random_caption}\n.\n.\n.\n.\n{keywords}\n.\n.\n.\n.\n{hashtags_str}"
         random_delay(2,60)
         api.delay_range = [1, 3]
         reel = api.clip_upload(
