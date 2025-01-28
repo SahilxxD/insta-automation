@@ -136,10 +136,10 @@ def main():
     video_dir = './reels'
 
     hashtags = [
-        "#CuteAnimals", "#FunnyAnimals", "#AnimalVideos", "#PetLovers", "#trending",
-        "#AdorablePets", "#PetPhotography", "#FurBabies", "#FurryLove", "#AnimalMagic",
-        "#AnimalsOfInstagram", "#InstaAnimal", "#PetAddict", "#PetsofInstagram", "#fyp",
-        "#WildlifePhotographer", "#FurryFriends", "#NatureLovers", "#WildlifeLover", "#viralreel", "#trendingaudio"
+        "#duteanimals", "#funnyanimals", "#animalvideos", "#petlovers", "#trending",
+        "#adorablepets", "#petphotography", "#furbabies", "#furrylove", "#viralreels",
+        "#animalsofinstagram", "#instaanimal", "#petaddict", "#petsofinstagram", "#fyp",
+        "#wildlifephotographer", "#furryfriends", "#naturelovers", "#wildlifelover", "#viralreel", "#trendingaudio"
     ]
 
     day_of_month = datetime.datetime.now().day
